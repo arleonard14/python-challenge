@@ -24,7 +24,7 @@ with open(csvpath) as csvfile:
 
    # Read each row of data after header
    for row in csvreader:
-      # print total
+      # find total
       total+=int(row [1])
 
    # If not the first row
@@ -38,7 +38,7 @@ with open(csvpath) as csvfile:
        
       pl_months.append(row[0])
 
-      # print number of months
+      # add to number of months
       months+=1
       prev_total=int(row[1])
 
@@ -63,5 +63,5 @@ with open(csvpath) as csvfile:
    print(f"Average Change: ${average_change}")
    print(f"Greatest Increase in Profits: {max_pl_month} ${max_pl_num}")
    print(f"Greatest Loss in profits: {min_pl_month} ${min_pl_num}")
-      
-      
+
+   
