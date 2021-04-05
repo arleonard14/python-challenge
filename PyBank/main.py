@@ -55,13 +55,35 @@ with open(csvpath) as csvfile:
    min_pl_idx=profit_loss.index(min_pl_num)
    min_pl_month=pl_months[min_pl_idx]
 
-   # print total
-   print("Financial Analysis")
-   print("-----------------------------------")
-   print(f"Total Months: {months}")
-   print(f"Total: {total}")
-   print(f"Average Change: ${average_change}")
-   print(f"Greatest Increase in Profits: {max_pl_month} ${max_pl_num}")
-   print(f"Greatest Loss in profits: {min_pl_month} ${min_pl_num}")
+# Define lists
+months_total=[months]
+total_list=[total]
+average_change_list=[average_change]
+increase_list_month=[max_pl_month]
+decrease_list_month=[min_pl_month]
+increase_list=[max_pl_num]
+decrease_list=[min_pl_num]
+
+# export to csv
+cleaned_csv = zip(months_total, total_list, average_change_list, increase_list_month, increase_list, decrease_list_month, decrease_list)
+output_file = os.path.join("output_pybank.csv")
+
+with open(output_file, "w", newline="") as datafile:
+    writer = csv.writer(datafile)
+
+    # Write the header row
+    writer.writerow(["Months", "Total", "Average Change", "Greatest Increase Month", "Greatest Increase", "Greatest Decrease Month","Greatest Decrease"])
+
+    # Write in zipped rows
+    writer.writerows(cleaned_csv)
+   
+ # print total
+print("Financial Analysis")
+print("-----------------------------------")
+print(f"Total Months: {months}")
+print(f"Total: {total}")
+print(f"Average Change: ${average_change}")
+print(f"Greatest Increase in Profits: {max_pl_month} ${max_pl_num}")
+print(f"Greatest Loss in profits: {min_pl_month} ${min_pl_num}")
 
    
